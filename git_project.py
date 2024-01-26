@@ -50,3 +50,22 @@ def git_command(command):
         check_call(['git'] + command.split())
     except CalledProcessError as e:
         print(f"Ошибка выполнения команды Git: {e}")
+
+# Интерактивный цикл командной строки
+while True:
+    command = input("Введите команду: ").strip().lower()
+    if command == "exit":
+        break
+    args = command.split()
+    if args[0] == "create":
+        create(' '.join(args[1:]))
+    elif args[0] == "delete":
+        delete(' '.join(args[1:]))
+    elif args[0] == "move":
+        move(args[1], args[2])
+    elif args[0] == "copy":
+        copy(args[1], args[2])
+    elif args[0] == "git":
+        git_command(' '.join(args[1:]))
+    else:
+        print("Неизвестная команда.")        
