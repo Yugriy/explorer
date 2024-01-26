@@ -2,7 +2,7 @@ import os
 import shutil
 from subprocess import check_call, CalledProcessError
 
-# Функция для создания файла или папки
+# Функция для создания файла или папки   
 def create(path):
     if not os.path.exists(path):
         if '.' in os.path.basename(path):  # Предполагаем, что это файл, если есть расширение
@@ -51,6 +51,8 @@ def git_command(command):
     except CalledProcessError as e:
         print(f"Ошибка выполнения команды Git: {e}")
 
+
+       
 # Интерактивный цикл командной строки
 while True:
     command = input("Введите команду: ").strip().lower()
@@ -68,4 +70,4 @@ while True:
     elif args[0] == "git":
         git_command(' '.join(args[1:]))
     else:
-        print("Неизвестная команда.")        
+        print("Неизвестная команда.")
