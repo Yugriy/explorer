@@ -1,0 +1,15 @@
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+numbers.pop()
+a = numbers.pop()
+print(a)
+#numbers.pop(0)
+#b = numbers.pop(0)
+#numbers.pop(11)
+#c = numbers.pop(11)
+#numbers.pop(6)
+#d = numbers.pop()
+#print(numbers)
+#print(sum(a, b, c, d))
+#suma = numbers.pop() + numbers.pop(0) + numbers.pop(11) + numbers.pop(6)
+
+#print(suma)
