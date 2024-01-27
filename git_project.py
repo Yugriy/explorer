@@ -35,6 +35,8 @@ def move(src, dst):
         print(f"{src} перемещен(а) в {dst}.")
     except FileNotFoundError:
         print(f"{src} не найден(а) для перемещения.")
+    except OSError:
+        print('Ничего не пермещено, т.к. указано некорректное имя')
 
 # Функция для копирования файла или папки
 def copy(src, dst):
