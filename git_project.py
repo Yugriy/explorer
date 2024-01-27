@@ -4,15 +4,18 @@ from subprocess import check_call, CalledProcessError
 
 # Функция для создания файла или папки   
 def create(path):
-    if not os.path.exists(path):
-        if '.' in os.path.basename(path):  # Предполагаем, что это файл, если есть расширение
-            with open(path, 'w') as file:
-                file.write("")  # Создаем пустой файл
+    try:
+        if not os.path.exists(path):
+            if '.' in os.path.basename(path):  # Предполагаем, что это файл, если есть расширение
+                with open(path, 'w') as file:
+                    file.write("")  # Создаем пустой файл
+            else:
+                os.makedirs(path)  # Создаем папку
+            print(f"{path} создан(а).")
         else:
-            os.makedirs(path)  # Создаем папку
-        print(f"{path} создан(а).")
-    else:
-        print(f"{path} уже существует.")
+            print(f"{path} уже существует.")
+    except OSError:
+        print('Ничего не создано, т.к. задано некорректное имя')
 
 # Функция для удаления файла или папки
 def delete(path):
@@ -50,7 +53,6 @@ def git_command(command):
         check_call(['git'] + command.split())
     except CalledProcessError as e:
         print(f"Ошибка выполнения команды Git: {e}")
-
 
        
 # Интерактивный цикл командной строки
