@@ -40,14 +40,17 @@ def move(src, dst):
 
 # Функция для копирования файла или папки
 def copy(src, dst):
-    if os.path.isfile(src):
-        shutil.copy(src, dst)
-    elif os.path.isdir(src):
-        shutil.copytree(src, dst)
-    else:
-        print(f"{src} не найден(а) для копирования.")
-        return
-    print(f"{src} скопирован(а) в {dst}.")
+    try:
+        if os.path.isfile(src):
+            shutil.copy(src, dst)
+        elif os.path.isdir(src):
+            shutil.copytree(src, dst)
+        else:
+            print(f"{src} не найден(а) для копирования.")
+            return
+        print(f"{src} скопирован(а) в {dst}.")
+    except OSError:
+        print('Ничего не скопировано, т.к. указано некорректное имя')
 
 # Функция для выполнения команд Git
 def git_command(command):
